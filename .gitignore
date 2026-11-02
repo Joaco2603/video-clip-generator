@@ -1,0 +1,12 @@
+# Video source and rendered media (keep locally; do not commit)
+*.mp4
+*.mov
+*.m4v
+*.webm
+*.mkv
+
+# Common generated media output
+*.wav
+*.mp3
+*.aac
+*.flac
