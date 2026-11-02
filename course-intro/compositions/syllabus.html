@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Marker Felt";
+          src: url("assets/fonts/MarkerFelt.ttc") format("truetype");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: #fffcf2;
+          color: #252422;
+        }
+        .kicker {
+          position: absolute;
+          top: 100px;
+          left: 140px;
+          margin: 0;
+          font-family: "IBM Plex Mono", monospace;
+          font-size: 22px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+        }
+        .headline {
+          position: absolute;
+          top: 190px;
+          left: 140px;
+          margin: 0;
+          font-family: "Marker Felt", cursive;
+          font-weight: 400;
+          font-size: 84px;
+          line-height: 1.05;
+        }
+        .bar {
+          position: absolute;
+          top: 300px;
+          left: 140px;
+          width: 420px;
+          height: 6px;
+          background: #eb5e28;
+        }
+        .item {
+          position: absolute;
+          left: 140px;
+          right: 120px;
+          display: flex;
+          align-items: baseline;
+          gap: 22px;
+          font-family: "EB Garamond", serif;
+          font-size: 40px;
+          line-height: 1.3;
+        }
+        .num {
+          font-family: "Marker Felt", cursive;
+          font-size: 48px;
+          color: #eb5e28;
+        }
+        #syl-1 { top: 400px; }
+        #syl-2 { top: 510px; }
+        #syl-3 { top: 640px; }
+      </style>
+      <div id="root" data-composition-id="syllabus" data-width="1920" data-height="1080">
+        <p class="kicker">from scratch</p>
+        <h1 class="headline" id="syl-title">What we build</h1>
+        <div class="bar" id="syl-bar"></div>
+        <p class="item" id="syl-1"><span class="num">1</span> Tokenization and embeddings</p>
+        <p class="item" id="syl-2"><span class="num">2</span> Scaled dot-product attention and multi-head attention</p>
+        <p class="item" id="syl-3"><span class="num">3</span> Build and train a transformer block</p>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#syl-title", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.15);
+        tl.fromTo("#syl-bar", { scaleX: 0 }, { scaleX: 1, transformOrigin: "left center", duration: 0.35, ease: "power2.out" }, 0.4);
+        tl.fromTo("#syl-1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.48);
+        tl.fromTo("#syl-2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 7.6);
+        tl.fromTo("#syl-3", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 12.91);
+        window.__timelines["syllabus"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

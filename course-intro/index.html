@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Transformers intro</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Marker Felt";
+        src: url("assets/fonts/MarkerFelt.ttc") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
+      html,
+      body {
+        margin: 0;
+        background: #fffcf2;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #fffcf2;
+      }
+      .clip {
+        position: absolute;
+      }
+      .camera {
+        width: 1280px;
+        height: 720px;
+        left: 320px;
+        top: 70px;
+        object-fit: cover;
+        background: #403d39;
+      }
+      .caption {
+        left: 120px;
+        top: 830px;
+        width: 1680px;
+        height: 180px;
+      }
+      .caption {
+        margin: 0;
+        font-family: "Marker Felt", cursive;
+        font-weight: 400;
+        font-size: 72px;
+        line-height: 1.05;
+        color: #252422;
+        width: max-content;
+        border-bottom: 6px solid #eb5e28;
+        padding-bottom: 8px;
+      }
+      #closer {
+        font-size: 84px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="97.98"
+      data-width="1920"
+      data-height="1080"
+    >
+      <audio
+        id="voice"
+        src="assets/voice.m4a"
+        data-start="0"
+        data-duration="97.98"
+        data-track-index="0"
+        data-volume="1"
+      ></audio>
+
+      <video
+        id="cam-open"
+        class="clip camera"
+        src="assets/video1.mov"
+        muted
+        playsinline
+        data-start="0"
+        data-duration="16"
+        data-media-start="0"
+        data-track-index="1"
+      ></video>
+      <video
+        id="cam-welcome"
+        class="clip camera"
+        src="assets/video1.mov"
+        muted
+        playsinline
+        data-start="23.80"
+        data-duration="15.80"
+        data-media-start="23.80"
+        data-track-index="1"
+      ></video>
+      <video
+        id="cam-close"
+        class="clip camera"
+        src="assets/video1.mov"
+        muted
+        playsinline
+        data-start="95.76"
+        data-duration="2.22"
+        data-media-start="95.76"
+        data-track-index="1"
+      ></video>
+
+      <h1 id="title-a" class="clip caption" data-start="23.80" data-duration="13.56" data-track-index="2">Transformers: Zero to Expert</h1>
+
+      <div
+        id="hook"
+        class="clip"
+        data-composition-id="hook"
+        data-composition-src="compositions/hook.html"
+        data-start="16"
+        data-duration="7.80"
+        data-track-index="3"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="diagram"
+        class="clip"
+        data-composition-id="diagram"
+        data-composition-src="compositions/diagram.html"
+        data-start="39.60"
+        data-duration="13.04"
+        data-track-index="3"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="syllabus"
+        class="clip"
+        data-composition-id="syllabus"
+        data-composition-src="compositions/syllabus.html"
+        data-start="52.64"
+        data-duration="31.62"
+        data-track-index="3"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="prerequisite"
+        class="clip"
+        data-composition-id="prerequisite"
+        data-composition-src="compositions/prerequisite.html"
+        data-start="84.26"
+        data-duration="11.50"
+        data-track-index="3"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

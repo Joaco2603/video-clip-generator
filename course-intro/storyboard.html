@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Transformers intro — storyboard v1</title>
+  <style>
+    :root {
+      --paper: #FFFCF2;
+      --ink: #252422;
+      --stone: #403D39;
+      --muted: #CCC5B9;
+      --accent: #EB5E28;
+      --display: "Marker Felt", "Segoe Print", cursive;
+      --body: "Iowan Old Style", Palatino, Georgia, serif;
+      --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #E7E1D6;
+      color: var(--ink);
+      font-family: var(--body);
+    }
+    header {
+      padding: 36px 40px 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 42px;
+      margin: 0 0 6px;
+    }
+    .dek { margin: 0; font-size: 18px; }
+    .tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink);
+      padding: 4px 8px;
+    }
+    .grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 40px 64px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px 22px;
+    }
+    .cell { display: flex; flex-direction: column; gap: 8px; }
+    .stage {
+      aspect-ratio: 16 / 9;
+      container-type: inline-size;
+      background: var(--paper);
+      border: 1px solid var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    .meta, .note, .chip { font-size: 13px; }
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 8px;
+      font-family: var(--mono);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+    .meta span { white-space: nowrap; }
+    .meta span:last-child { text-align: right; line-height: 1.35; }
+    .note { margin: 0; line-height: 1.4; }
+    .chip {
+      align-self: flex-start;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 3px 7px;
+    }
+    .kicker {
+      position: absolute;
+      top: 7cqw;
+      left: 6cqw;
+      font-family: var(--mono);
+      font-size: 1.3cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .headline {
+      font-family: var(--display);
+      font-size: 5.4cqw;
+      line-height: 1.05;
+      margin: 0;
+    }
+    .underline {
+      display: inline-block;
+      border-bottom: 0.35cqw solid var(--accent);
+      padding-bottom: 0.2cqw;
+    }
+    .flow {
+      position: absolute;
+      left: 6cqw;
+      right: 6cqw;
+      top: 38cqw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2cqw;
+    }
+    .node {
+      border: 0.22cqw solid var(--ink);
+      border-radius: 2px;
+      padding: 1.4cqw 1.2cqw;
+      font-family: var(--display);
+      font-size: 2.1cqw;
+      background: var(--paper);
+      text-align: center;
+      min-width: 14cqw;
+    }
+    .node.focal { border-color: var(--accent); }
+    .arrow {
+      flex: 1;
+      height: 0.22cqw;
+      background: var(--accent);
+      position: relative;
+    }
+    .arrow::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -0.45cqw;
+      border-top: 0.55cqw solid transparent;
+      border-bottom: 0.55cqw solid transparent;
+      border-left: 0.9cqw solid var(--accent);
+    }
+    .plate {
+      position: absolute;
+      left: 16.65cqw;
+      top: 6cqw;
+      width: 66.7cqw;
+      height: 28cqw;
+      background: var(--stone);
+      color: var(--paper);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 2cqw;
+      font-family: var(--mono);
+      font-size: 1.4cqw;
+      letter-spacing: 0.14em;
+    }
+    .plate .head {
+      position: absolute;
+      width: 8cqw;
+      height: 8cqw;
+      border: 0.25cqw solid var(--paper);
+      border-radius: 50%;
+      top: 6cqw;
+      left: 29cqw;
+    }
+    .plate .shoulders {
+      position: absolute;
+      width: 22cqw;
+      height: 10cqw;
+      border: 0.25cqw solid var(--paper);
+      border-bottom: 0;
+      border-radius: 11cqw 11cqw 0 0;
+      bottom: 5cqw;
+      left: 22cqw;
+    }
+    .lockup {
+      position: absolute;
+      left: 6cqw;
+      right: 6cqw;
+      bottom: 8cqw;
+      font-family: var(--display);
+      font-size: 3.4cqw;
+    }
+    .card-copy {
+      position: absolute;
+      left: 8cqw;
+      right: 8cqw;
+      top: 16cqw;
+    }
+    .row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.4cqw;
+      font-size: 2.5cqw;
+      margin: 0 0 2.2cqw;
+      font-family: var(--body);
+    }
+    .mark {
+      font-family: var(--display);
+      color: var(--accent);
+      font-size: 2.8cqw;
+    }
+    .closer {
+      position: absolute;
+      left: 6cqw;
+      bottom: 5cqw;
+      margin: 0;
+      font-family: var(--display);
+      font-size: 4.6cqw;
+    }
+    .span2 { grid-column: span 2; }
+    .tokens, .seams { padding: 4cqw 5cqw; }
+    .swatches { display: flex; gap: 1.2cqw; margin-top: 2cqw; }
+    .swatch { width: 8cqw; height: 8cqw; border: 1px solid var(--ink); }
+    .token-label { font-family: var(--mono); font-size: 1.3cqw; margin-top: 2cqw; }
+    .ban { font-size: 1.8cqw; margin: 1cqw 0 0; }
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: 1fr; }
+      .span2 { grid-column: auto; }
+      header, .grid { padding-left: 20px; padding-right: 20px; }
+    }
+    .seam-strip { display: flex; align-items: center; gap: 0.8cqw; margin-top: 6cqw; }
+    .seam-bit {
+      border: 0.2cqw solid var(--ink);
+      padding: 1.2cqw 0.8cqw;
+      font-family: var(--mono);
+      font-size: 1.3cqw;
+      letter-spacing: 0.08em;
+    }
+    .seam-bit span { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Transformers intro v1</h1>
+    <p class="dek">A slow course intro. Your voice stays. The picture cuts to paper cards, then back to you.</p>
+    <div class="tag">1920×1080 · 98s · 5 frames</div>
+  </header>
+  <main class="grid">
+    <article class="cell" id="frame-01">
+      <div class="stage">
+        <div class="kicker">00:00</div>
+        <div class="card-copy" style="top: 18cqw">
+          <p class="headline"><span class="underline">Lost under the math?</span></p>
+        </div>
+        <div class="flow">
+          <div class="node">the</div>
+          <div class="arrow"></div>
+          <div class="node">cat</div>
+          <div class="arrow"></div>
+          <div class="node focal">block</div>
+        </div>
+      </div>
+      <div class="meta"><span>01 · Hook</span><span>0:00–0:18</span></div>
+      <p class="note"><strong>Draw-on.</strong> Three token boxes stroke toward one block, left to right. Then a hard cut to you for the rest of the hook.</p>
+      <span class="chip">hard cut · left</span>
+    </article>
+
+    <article class="cell" id="frame-02">
+      <div class="stage">
+        <div class="kicker">the promise</div>
+        <div class="card-copy" style="top: 16cqw">
+          <p class="headline" style="font-size: 4.2cqw">Tokens → Attention → Output</p>
+        </div>
+        <div class="flow" style="top: 42cqw">
+          <div class="node">Tokens</div>
+          <div class="arrow"></div>
+          <div class="node focal">Attention</div>
+          <div class="arrow"></div>
+          <div class="node">Output</div>
+        </div>
+      </div>
+      <div class="meta"><span>02 · Promise</span><span>0:18–0:42</span></div>
+      <p class="note"><strong>Draw-on.</strong> You open the beat, this diagram draws in the middle, then a hard cut back to you. The course title sits on the camera plate, not on this card.</p>
+      <span class="chip">hard cut · left</span>
+    </article>
+
+    <article class="cell" id="frame-03">
+      <div class="stage">
+        <div class="kicker">before we start</div>
+        <div class="card-copy">
+          <p class="headline"><span class="underline">You need two things</span></p>
+          <p class="row" style="margin-top: 4cqw"><span class="mark">1</span> Python installed</p>
+          <p class="row"><span class="mark">2</span> Basic programming: functions, loops, and reading a short script</p>
+        </div>
+      </div>
+      <div class="meta"><span>03 · Prerequisite</span><span>0:42–0:56</span></div>
+      <p class="note"><strong>Hold to read.</strong> The card covers you. Your voice keeps going. Nothing new is spoken.</p>
+      <span class="chip">hard cut · left</span>
+    </article>
+
+    <article class="cell" id="frame-04">
+      <div class="stage">
+        <div class="kicker">from scratch</div>
+        <div class="card-copy">
+          <p class="headline" style="font-size: 4.4cqw"><span class="underline">What we build</span></p>
+          <p class="row" style="margin-top: 3.2cqw"><span class="mark">1</span> Tokenization and embeddings</p>
+          <p class="row"><span class="mark">2</span> Scaled dot-product attention and multi-head attention</p>
+          <p class="row"><span class="mark">3</span> Build and train a transformer block</p>
+        </div>
+      </div>
+      <div class="meta"><span>04 · Syllabus</span><span>0:56–1:22</span></div>
+      <p class="note"><strong>One line at a time.</strong> Each row draws on after the one above it. Same card, same place, as frame 03.</p>
+      <span class="chip">hard cut · left</span>
+    </article>
+
+    <article class="cell" id="frame-05">
+      <div class="stage">
+        <div class="plate">
+          <div class="head"></div>
+          <div class="shoulders"></div>
+          YOU
+        </div>
+        <p class="closer"><span class="underline">Let’s dive in.</span></p>
+      </div>
+      <div class="meta"><span>05 · Dive in</span><span>1:22–1:38</span></div>
+      <p class="note"><strong>Held.</strong> Hard cut back to the same camera plate. The line lands, then your face holds through the last frame.</p>
+      <span class="chip">end</span>
+    </article>
+
+    <article class="cell" id="seams">
+      <div class="stage">
+        <div class="seams">
+          <div class="kicker" style="position: static">seams</div>
+          <div class="seam-strip">
+            <div class="seam-bit">01 <span>cut</span></div>
+            <div class="seam-bit">02 <span>cut</span></div>
+            <div class="seam-bit">03 <span>cut</span></div>
+            <div class="seam-bit">04 <span>cut</span></div>
+            <div class="seam-bit">05 <span>hold</span></div>
+          </div>
+          <p class="ban">Every handoff is a hard cut. The next card enters from the right.</p>
+        </div>
+      </div>
+      <div class="meta"><span>Seam map</span><span>leftward</span></div>
+      <p class="note"><strong>One direction.</strong> Picture travel stays left. No wipes.</p>
+    </article>
+
+    <article class="cell span2" id="tokens">
+      <div class="stage">
+        <div class="tokens">
+          <div class="kicker" style="position: static">tokens</div>
+          <div class="swatches">
+            <div class="swatch" style="background:#FFFCF2"></div>
+            <div class="swatch" style="background:#252422"></div>
+            <div class="swatch" style="background:#403D39"></div>
+            <div class="swatch" style="background:#CCC5B9"></div>
+            <div class="swatch" style="background:#EB5E28"></div>
+          </div>
+          <p class="token-label">paper · ink · stone · muted · accent</p>
+          <p class="headline" style="font-size: 4cqw; margin-top: 2cqw">Marker Felt</p>
+          <p class="ban" style="font-family: var(--body)">Iowan Old Style for the lines you read.</p>
+          <p class="ban">No cyan, glow, gradient type, neon, upscaled face, invented name, or fake editor.</p>
+        </div>
+      </div>
+      <div class="meta"><span>Brand</span><span>frame.md</span></div>
+      <p class="note"><strong>One sheet.</strong> Orange is a single underline or arrow. The stone block is you, at native size.</p>
+    </article>
+  </main>
+</body>
+</html>

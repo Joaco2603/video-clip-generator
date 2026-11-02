@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "preferences": {
+    "flow": {
+      "value": "companion",
+      "confirmed_in": [
+        "course-intro"
+      ],
+      "updated_at": "2026-10-10T00:13:58.466Z"
+    },
+    "storyboard": {
+      "value": "yes",
+      "confirmed_in": [
+        "course-intro"
+      ],
+      "updated_at": "2026-10-10T00:13:58.529Z"
+    }
+  },
+  "sightings": {}
+}

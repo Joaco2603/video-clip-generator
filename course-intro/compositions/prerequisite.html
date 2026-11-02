@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Marker Felt";
+          src: url("assets/fonts/MarkerFelt.ttc") format("truetype");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: #fffcf2;
+          color: #252422;
+        }
+        .kicker {
+          position: absolute;
+          top: 100px;
+          left: 140px;
+          margin: 0;
+          font-family: "IBM Plex Mono", monospace;
+          font-size: 22px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+        }
+        .headline {
+          position: absolute;
+          top: 200px;
+          left: 140px;
+          margin: 0;
+          font-family: "Marker Felt", cursive;
+          font-weight: 400;
+          font-size: 88px;
+          line-height: 1.05;
+        }
+        .bar {
+          position: absolute;
+          top: 320px;
+          left: 140px;
+          width: 560px;
+          height: 6px;
+          background: #eb5e28;
+        }
+        .item {
+          position: absolute;
+          left: 140px;
+          display: flex;
+          align-items: baseline;
+          gap: 22px;
+          font-family: "EB Garamond", serif;
+          font-size: 42px;
+          line-height: 1.3;
+        }
+        .num {
+          font-family: "Marker Felt", cursive;
+          font-size: 48px;
+          color: #eb5e28;
+        }
+        #pre-1 { top: 420px; }
+        #pre-2 { top: 520px; }
+      </style>
+      <div id="root" data-composition-id="prerequisite" data-width="1920" data-height="1080">
+        <p class="kicker">before we start</p>
+        <h1 class="headline" id="pre-title">You need two things</h1>
+        <div class="bar" id="pre-bar"></div>
+        <p class="item" id="pre-1"><span class="num">1</span> Basic programming: functions, loops, and reading a short script</p>
+        <p class="item" id="pre-2"><span class="num">2</span> Python installed</p>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#pre-title", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.15);
+        tl.fromTo("#pre-bar", { scaleX: 0 }, { scaleX: 1, transformOrigin: "left center", duration: 0.35, ease: "power2.out" }, 0.4);
+        tl.fromTo("#pre-1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.63);
+        tl.fromTo("#pre-2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 8.21);
+        window.__timelines["prerequisite"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
